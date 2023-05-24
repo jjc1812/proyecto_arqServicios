@@ -1,4 +1,5 @@
 import mysql from "mysql";
+import Auto from "../objetos/Auto.js"
 
 class AutoDTO {
 
@@ -10,6 +11,7 @@ class AutoDTO {
     });
 
     getAllAutos() {
+        let autos = [];
         this.connection.query("SELECT * FROM poo.autos;", function (error, results){
             if (error){
                 console.error(error)
