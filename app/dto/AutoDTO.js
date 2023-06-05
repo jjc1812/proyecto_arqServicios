@@ -1,5 +1,5 @@
 import mysql from "mysql";
-import Auto from "../objetos/Auto.js"
+import AutoMapping from "../mapping/AutoMapping.js";
 
 class AutoDTO {
 
@@ -10,17 +10,25 @@ class AutoDTO {
         database: 'poo'
     });
 
-    getAllAutos() {
-        let autos = [];
-        this.connection.query("SELECT * FROM poo.autos;", function (error, results){
-            if (error){
-                console.error(error)
-            }
+    async getAllAutos() {
+        const autoMapping = new AutoMapping();
+        try {
+            const results = await new Promise((resolve, reject) => {
+              this.connection.query("SELECT * FROM poo.autos;", function (error, results) {
+                if (error) {
+                  console.error(error);
+                  reject(error);
+                } else {
+                  resolve(results);
+                }
+              });
+            });
             
-            results.forEach(elemento => {
-                console.log(elemento);
-            })
-        });
+            const autosMap = results.map(elemento => autoMapping.convertAuto(elemento));
+            return autosMap;
+        } catch (error) {
+            return error;
+        }
     }
 }
 

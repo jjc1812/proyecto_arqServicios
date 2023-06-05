@@ -10,10 +10,11 @@ class Auto {
     }
 
     pagaPatente() {
-        const fechaUnix = moment(this.fechaFabricacion).format();
-        const exento = 473040000;
-        if(fechaUnix-exento < 0) return false;
-        else return true;
+        const fechaUnix = moment(this.fechaFabricacion).format("X");
+        const actual = moment().format("X");
+        const exento = 4730400;
+        if(fechaUnix > actual-exento) return true;
+        else return false;
     }
 
     getIdAuto() {

@@ -4,11 +4,19 @@ import express from "express";
 const app = express();
 const port = 8080;
 
-app.get("/", (req, res) => {
-    res.send("Hello Word!");
-    const autoDTO = new AutoDTO();
-    autoDTO.getAllAutos()
-})
+app.get("/", async (req, res) => {
+    try {
+      res.send("Hello World!");
+      
+      const autoDTO = new AutoDTO();
+      const autos = await autoDTO.getAllAutos();
+      
+      console.log(autos);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+});
 
 app.listen(port, () => {
     console.log(`El servidor esta andando en ${port}`);
