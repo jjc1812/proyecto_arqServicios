@@ -21,8 +21,16 @@ class Auto {
         return this.idAuto;
     }
 
+    getCeroKM() {
+        return this.ceroKM;
+    }
+
     setCeroKM(setCeroKM){
         this.ceroKM = setCeroKM;
+    }
+
+    setFechaFabricacion(newFechaFabricacion){
+        this.fechaFabricacion = newFechaFabricacion;
     }
 }
 
