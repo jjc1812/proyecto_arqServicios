@@ -1,6 +1,7 @@
 import moment from "moment";
 import AutoDTO from "../dto/AutoDTO.js";
 import AutosUsados from "../objetos/AutosUsados.js";
+import AutoMapping from "../mapping/AutoMapping.js";
 
 class AutoService {
     async getAutos(){
@@ -19,6 +20,36 @@ class AutoService {
         } catch (error) {
             console.error(error);
         }
+    }
+
+    postAuto(auto) {
+        if(!this.validaFecha(auto.fecha_fabricacion))
+            return "ERROR_FECHA";
+        if(!this.validaPuertas(auto.puertas))
+            return "ERROR_PUERTAS";
+        
+        const autoMapping = new AutoMapping();
+        const autoSave = autoMapping.convertAutoSave(auto);
+
+        return "OK";
+    }
+    
+    validaFecha(fecha_fabricacion) {
+        const fecha_timestamp = parseInt(moment(Date(fecha_fabricacion)).format("X"));
+        const fecha_hoy = parseInt(moment().format("X"));
+        if(fecha_hoy<=fecha_timestamp) {
+            console.error("La fecha es mayor al dia de hoy");
+            return false;
+        }
+        return true;
+    }
+
+    validaPuertas(puertas) {
+        if(puertas > 5 || puertas < 1) {
+            console.error("No se coloco una cantidad de puertas en un rango aceptado");
+            return false;
+        }
+        return true;
     }
     
     createAutoUsado(auto) {

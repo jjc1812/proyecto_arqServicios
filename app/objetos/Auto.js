@@ -10,8 +10,8 @@ class Auto {
     }
 
     pagaPatente() {
-        const fechaUnix = moment(this.fechaFabricacion).format("X");
-        const actual = moment().format("X");
+        const fechaUnix = parseInt(moment(this.fechaFabricacion).format("X"));
+        const actual = parseInt(moment().format("X"));
         const exento = 4730400;
         if(fechaUnix > actual-exento) return true;
         else return false;
