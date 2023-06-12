@@ -32,6 +32,9 @@ app.post("/auto", (req, res) => {
       case "OK":
         res.status(200).send({message: "Se guardo con exito."});
         break;
+      default:
+        res.status(500).send("Internal Server Error");
+        break;
     }
   } catch (error) {
     res.status(500).send("Internal Server Error");

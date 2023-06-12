@@ -9,7 +9,7 @@ class AutoSave {
     }
 
     parseDate() {
-        this.fechaFabricacion = moment(Date(this.fechaFabricacion)).format("YYYY-MM-DD");
+        this.fechaFabricacion = moment(this.fechaFabricacion).format("YYYY-MM-DD");
     }
 
     parseCeroKM() {

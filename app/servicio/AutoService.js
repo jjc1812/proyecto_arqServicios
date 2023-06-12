@@ -28,14 +28,20 @@ class AutoService {
         if(!this.validaPuertas(auto.puertas))
             return "ERROR_PUERTAS";
         
-        const autoMapping = new AutoMapping();
-        const autoSave = autoMapping.convertAutoSave(auto);
+        try {
+            const autoMapping = new AutoMapping();
+            const autoSave = autoMapping.convertAutoSave(auto);
+            const autoDTO = new AutoDTO();
+            autoDTO.postAuto(autoSave);
 
-        return "OK";
+            return "OK";
+        } catch (error) {
+            return error;
+        }
     }
     
     validaFecha(fecha_fabricacion) {
-        const fecha_timestamp = parseInt(moment(Date(fecha_fabricacion)).format("X"));
+        const fecha_timestamp = parseInt(moment(fecha_fabricacion).format("X"));
         const fecha_hoy = parseInt(moment().format("X"));
         if(fecha_hoy<=fecha_timestamp) {
             console.error("La fecha es mayor al dia de hoy");

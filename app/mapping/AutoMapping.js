@@ -9,7 +9,7 @@ class AutoMapping {
     }
 
     convertAutoSave(auto){
-        const autoSave = new AutoSave(auto.fecha_fabricacion, auto.ceroKM, auto.marca, auto.puerta);
+        const autoSave = new AutoSave(auto.fecha_fabricacion, auto.ceroKM, auto.marca, auto.puertas);
         autoSave.parseDate();
         autoSave.parseCeroKM();
         return autoSave;
