@@ -31,19 +31,19 @@ class AutoDTO {
               marca: "fiat",
               puertas: 5
             },{
-              id_autos: 1,
+              id_autos: 2,
               fecha_fabricacion: 169560355200,
               ceroKM: 1,
               marca: "ford",
               puertas: 3
             },{
-              id_autos: 1,
+              id_autos: 3,
               fecha_fabricacion: 169760355200,
               ceroKM: 0,
               marca: "mercedes benz",
               puertas: 5
             },{
-              id_autos: 1,
+              id_autos: 4,
               fecha_fabricacion: 169063355200,
               ceroKM: 0,
               marca: "fiat",
