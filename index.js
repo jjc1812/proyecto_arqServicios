@@ -7,10 +7,10 @@ const port = 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
-app.get("/auto", async (req, res) => {
+app.get("/auto", (req, res) => {
     try {      
       const autoService = new AutoService();
-      const autos = await autoService.getAutos();
+      const autos = autoService.getAutos();
       
       res.send(autos);
     } catch (error) {

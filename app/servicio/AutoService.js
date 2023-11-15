@@ -4,10 +4,10 @@ import AutosUsados from "../objetos/AutosUsados.js";
 import AutoMapping from "../mapping/AutoMapping.js";
 
 class AutoService {
-    async getAutos(){
+    getAutos(){
         try {
             const autoDTO = new AutoDTO();
-            const autos = await autoDTO.getAllAutos();
+            const autos = autoDTO.getAllAutos();
             let allAutos = [];
             autos.forEach(elemento => {
                 if(elemento.getCeroKM() == 1)

@@ -10,7 +10,7 @@ class AutoDTO {
         database: 'poo'
     });
 
-    async getAllAutos() {
+    getAllAutos() {
         const autoMapping = new AutoMapping();
         try {
             // const results = await new Promise((resolve, reject) => {
@@ -56,7 +56,7 @@ class AutoDTO {
             return error;
         }
     }
-    async postAuto(auto) {
+    postAuto(auto) {
       try {
         // const result = await new Promise((resolve, reject) => {
         //   this.connection.query(`INSERT INTO poo.autos (puertas, marca, ceroKM, fecha_fabricacion) VALUES (${auto.puertas}, '${auto.marca}', ${auto.ceroKM}, '${auto.fechaFabricacion}');`, function (error, result){
