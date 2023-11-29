@@ -42,5 +42,5 @@ app.post("/auto", (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`El servidor esta andando en ${port}`);
+    console.log(`El servidor esta andando en http://localhost:${port}/auto`);
 })
